@@ -41,7 +41,7 @@ r.instanceTransform = CATransform3DMakeRotation(angle, 0.0, 0.0, 1.0)
 
 let duration: CFTimeInterval = 3.5
 
-
+let finalValue = 0.25
 
 
 r.instanceDelay = duration/Double(nrSquares)
@@ -67,8 +67,8 @@ func setColorOffsets() {
 
 func animateColorOffsets() {
     let instanceRedOffsetAnimation = CABasicAnimation(keyPath: "instanceRedOffset")
-    instanceRedOffsetAnimation.fromValue = (Float(initialColor.components![0] - finalColor.components![0])) / Float(r.instanceCount)
-    instanceRedOffsetAnimation.toValue =  (Float(initialColor.components![0] - finalColor.components![0])) / Float(r.instanceCount)
+    instanceRedOffsetAnimation.fromValue = (Float(initialColor.components![0] - finalColor.components![0])) / Float(nrSquares)
+    instanceRedOffsetAnimation.toValue =  (Float(initialColor.components![0] - finalColor.components![0])) / Float(finalValue * Double(nrSquares))
     instanceRedOffsetAnimation.duration = duration
     r.add(instanceRedOffsetAnimation, forKey: "instanceRedOffsetAnimation")
 }
@@ -77,7 +77,7 @@ func animateColorOffsets() {
 func animateInstanceCount() {
     let instanceCountAnimation = CABasicAnimation(keyPath: "instanceCount")
     instanceCountAnimation.fromValue = nrSquares
-    instanceCountAnimation.toValue = Int(0.25 * Double(nrSquares))
+    instanceCountAnimation.toValue = Int(finalValue * Double(nrSquares))
     instanceCountAnimation.duration = duration
     r.add(instanceCountAnimation, forKey: "asfd")
 
